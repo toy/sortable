@@ -41,7 +41,7 @@ sortable =
         sortedDirection = @getAttribute 'data-sorted-direction'
         newSortedDirection = if sortedDirection is 'ascending' then 'descending' else 'ascending'
       else
-        newSortedDirection = type.defaultSortDirection
+        newSortedDirection = @getAttribute('data-default-direction') || type.defaultSortDirection
 
       ths = @parentNode.querySelectorAll('th')
       for th in ths
