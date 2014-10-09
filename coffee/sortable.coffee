@@ -36,6 +36,13 @@ sortable =
   setupClickableTH: (table, th, i) ->
     type = sortable.getColumnType table, i
 
+    if clickEvent is 'click'
+      addEventListener th, 'mousedown', (e) ->
+        if event.preventDefault
+          event.preventDefault()
+        else
+          event.returnValue = false
+
     addEventListener th, clickEvent, (e) ->
       if @getAttribute('data-sorted') is 'true'
         sortedDirection = @getAttribute 'data-sorted-direction'
