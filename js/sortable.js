@@ -57,6 +57,15 @@
     setupClickableTH: function(table, th, i) {
       var type;
       type = sortable.getColumnType(table, i);
+      if (clickEvent === 'click') {
+        addEventListener(th, 'mousedown', function(e) {
+          if (event.preventDefault) {
+            return event.preventDefault();
+          } else {
+            return event.returnValue = false;
+          }
+        });
+      }
       return addEventListener(th, clickEvent, function(e) {
         var newSortedDirection, position, row, rowArray, rowArrayObject, sign, sortedDirection, tBody, ths, _i, _j, _k, _len, _len1, _len2, _ref, _results;
         if (this.getAttribute('data-sorted') === 'true') {
